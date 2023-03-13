@@ -10,7 +10,7 @@ import SwiftUI
 /// Enum Tab Cases
 /// - rawValue: Asset Image Name
 
-enum Tab: String {
+enum Tab: String, CaseIterable {
 	case dance = "Dance"
 	case fruite = "Fruite"
 	case mirror = "Mirror"
