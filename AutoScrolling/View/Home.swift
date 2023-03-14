@@ -69,12 +69,20 @@ extension Home {
 			let size = $0.size
 			let tabWidth = size.width / 3
 			
-			LazyHStack(spacing: 0) {
+			HStack(spacing: 0) {
 				ForEach(Tab.allCases, id: \.rawValue) { tab in
 					Text(tab.rawValue)
 						.font(.title3.bold())
 						.foregroundColor(activeTab == tab ? .primary : .gray)
 						.frame(width: tabWidth)
+						.contentShape(Rectangle())
+						.onTapGesture {
+							withAnimation(.easeInOut(duration: 0.3)) {
+								activeTab = tab
+								/// Scroll Progess Explicitly
+								scrollProgress = CGFloat(tab.index)
+							}
+						}
 				}
 			}
 			.frame(width: CGFloat(Tab.allCases.count) * tabWidth)
