@@ -13,6 +13,7 @@
 		5B275D7D29BF796200B8C0DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B275D7C29BF796200B8C0DB /* Preview Assets.xcassets */; };
 		5B275D8829BF7A7100B8C0DB /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B275D8729BF7A7100B8C0DB /* Tab.swift */; };
 		5B275D8A29BF7B2800B8C0DB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B275D8929BF7B2800B8C0DB /* Home.swift */; };
+		5BA52DC429C0437200A513EF /* ScrollOffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA52DC329C0437200A513EF /* ScrollOffsetModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		5B275D7C29BF796200B8C0DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B275D8729BF7A7100B8C0DB /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		5B275D8929BF7B2800B8C0DB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		5BA52DC329C0437200A513EF /* ScrollOffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		5B275D7429BF795F00B8C0DB /* AutoScrolling */ = {
 			isa = PBXGroup;
 			children = (
+				5BA52DC229C0436000A513EF /* Helpers */,
 				5B275D8429BF7A4D00B8C0DB /* Model */,
 				5B275D8329BF7A4800B8C0DB /* View */,
 				5B275D7529BF795F00B8C0DB /* AutoScrollingApp.swift */,
@@ -87,6 +90,14 @@
 				5B275D8729BF7A7100B8C0DB /* Tab.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5BA52DC229C0436000A513EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5BA52DC329C0437200A513EF /* ScrollOffsetModifier.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B275D8829BF7A7100B8C0DB /* Tab.swift in Sources */,
+				5BA52DC429C0437200A513EF /* ScrollOffsetModifier.swift in Sources */,
 				5B275D7829BF795F00B8C0DB /* ContentView.swift in Sources */,
 				5B275D8A29BF7B2800B8C0DB /* Home.swift in Sources */,
 				5B275D7629BF795F00B8C0DB /* AutoScrollingApp.swift in Sources */,
@@ -299,7 +311,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,7 +341,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

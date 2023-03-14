@@ -13,15 +13,25 @@ struct Home: View {
 	@State private var scrollProgress: CGFloat = .zero
 	
     var body: some View {
-		VStack(spacing: 0) {
-			TabIndicatorView()
+		GeometryReader {
+			let size = $0.size
 			
-			TabView(selection: $activeTab) {
-				ForEach(Tab.allCases, id: \.rawValue) { tab in
-					TabImageView(tab)
+			VStack(spacing: 0) {
+				TabIndicatorView()
+				
+				TabView(selection: $activeTab) {
+					ForEach(Tab.allCases, id: \.rawValue) { tab in
+						TabImageView(tab)
+							.tag(tab)
+							.offsetX { rect in
+								let minX = rect.minX
+								let pageOffset = minX - (size.width * CGFloat(tab.index))
+								print(pageOffset)
+							}
+					}
 				}
+				.tabViewStyle(.page(indexDisplayMode: .never))
 			}
-			.tabViewStyle(.page(indexDisplayMode: .never))
 			.ignoresSafeArea(.container, edges: .bottom)
 		}
     }

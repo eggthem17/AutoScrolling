@@ -16,4 +16,14 @@ enum Tab: String, CaseIterable {
 	case mirror = "Mirror"
 	case night = "Night"
 	case road = "Road"
+	
+	/// Tab Index
+	var index: Int {
+		return Tab.allCases.firstIndex(of: self) ?? 0
+	}
+	
+	/// Total Count
+	var count: Int {
+		return Tab.allCases.count
+	}
 }
