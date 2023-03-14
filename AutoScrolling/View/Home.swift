@@ -23,10 +23,13 @@ struct Home: View {
 					ForEach(Tab.allCases, id: \.rawValue) { tab in
 						TabImageView(tab)
 							.tag(tab)
-							.offsetX { rect in
+							.offsetX(activeTab == tab) { rect in
 								let minX = rect.minX
 								let pageOffset = minX - (size.width * CGFloat(tab.index))
-								print(pageOffset)
+								
+								/// Converting Page Offset into Progress
+								let pageProgress = pageOffset / size.width
+								scrollProgress = pageProgress
 							}
 					}
 				}
@@ -64,7 +67,7 @@ extension Home {
 			let size = $0.size
 			let tabWidth = size.width / 3
 			
-			HStack(spacing: 0) {
+			LazyHStack(spacing: 0) {
 				ForEach(Tab.allCases, id: \.rawValue) { tab in
 					Text(tab.rawValue)
 						.font(.title3.bold())
