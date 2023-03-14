@@ -29,7 +29,9 @@ struct Home: View {
 								
 								/// Converting Page Offset into Progress
 								let pageProgress = pageOffset / size.width
-								scrollProgress = pageProgress
+								
+								/// Limiting Progress
+								scrollProgress = max(min(pageProgress, 0), -CGFloat(Tab.allCases.count - 1))
 							}
 					}
 				}
