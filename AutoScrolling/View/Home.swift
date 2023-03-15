@@ -11,6 +11,7 @@ struct Home: View {
 	/// View Properties
 	@State private var activeTab: Tab = .dance
 	@State private var scrollProgress: CGFloat = .zero
+	@State private var tapState: AnimationState = .init()
 	
     var body: some View {
 		GeometryReader {
@@ -31,7 +32,10 @@ struct Home: View {
 								let pageProgress = pageOffset / size.width
 								
 								/// Limiting Progress
-								scrollProgress = max(min(pageProgress, 0), -CGFloat(Tab.allCases.count - 1))
+								/// Simply Disable when the TapState value is true
+								if !tapState.status {
+									scrollProgress = max(min(pageProgress, 0), -CGFloat(Tab.allCases.count - 1))
+								}
 							}
 					}
 				}
@@ -50,6 +54,7 @@ struct Home_Previews: PreviewProvider {
 
 extension Home {
 	/// Image View
+	@ViewBuilder
 	func TabImageView(_ tab: Tab) -> some View {
 		GeometryReader {
 			let size = $0.size
@@ -64,6 +69,7 @@ extension Home {
 	}
 	
 	/// Tab Indicator
+	@ViewBuilder
 	func TabIndicatorView() -> some View {
 		GeometryReader {
 			let size = $0.size
@@ -80,7 +86,8 @@ extension Home {
 							withAnimation(.easeInOut(duration: 0.3)) {
 								activeTab = tab
 								/// Scroll Progess Explicitly
-								scrollProgress = CGFloat(tab.index)
+								scrollProgress = -CGFloat(tab.index)
+								tapState.startAnimation()
 							}
 						}
 				}
@@ -89,6 +96,12 @@ extension Home {
 			.padding(.leading, tabWidth)
 			.offset(x: scrollProgress * tabWidth)
 		}
+		.modifier(
+			AnimationEndCallBack(endValue: tapState.progress, onEnd: {
+				print("reset")
+				tapState.reset()
+			})
+		)
 		.frame(height: 50)
 		.padding(.top, 15)
 	}
