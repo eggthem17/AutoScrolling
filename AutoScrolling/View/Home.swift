@@ -12,6 +12,7 @@ struct Home: View {
 	@State private var activeTab: Tab = .dance
 	@State private var scrollProgress: CGFloat = .zero
 	@State private var tapState: AnimationState = .init()
+	@State private var avgColor: Color = .clear
 	
     var body: some View {
 		GeometryReader {
@@ -41,7 +42,16 @@ struct Home: View {
 				}
 				.tabViewStyle(.page(indexDisplayMode: .never))
 			}
+			.background{
+				avgColor
+					.overlay(Material.ultraThinMaterial)
+			}
 			.ignoresSafeArea(.container, edges: .bottom)
+		}
+		.onChange(of: activeTab) { newValue in
+			withAnimation {
+				self.setAverageColor(tab: activeTab)
+			}
 		}
     }
 }
@@ -104,5 +114,10 @@ extension Home {
 		)
 		.frame(height: 50)
 		.padding(.top, 15)
+	}
+	
+	private func setAverageColor(tab: Tab) {
+		let uiColor = UIImage(named: tab.rawValue)?.averageColor ?? .clear
+		avgColor = Color(uiColor)
 	}
 }
